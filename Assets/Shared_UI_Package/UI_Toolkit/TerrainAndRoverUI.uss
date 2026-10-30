@@ -1,4 +1,4 @@
-/* =========================================================================
+﻿/* =========================================================================
    TerrainAndRoverUI.uss - VR Rover Digital Twin Studio UI Stylesheet
    Pure Black Technical Theme · Strict Rectangular Language (8px panels, 6px controls)
    Multi-resolution responsive layout & 2D heightmap painter support
@@ -93,7 +93,7 @@
 }
 
 .mode-toggle-bar {
-    width: 230px;
+    width: 350px;
     height: 38px;
     pointer-events: auto;
     border-radius: var(--r-btn);
@@ -105,18 +105,26 @@
 }
 
 .mode-toggle-item {
-    flex: 1;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 6px;
-    padding: 0 10px;
+    padding: 0 8px;
     border-radius: var(--r-sm);
     border-width: 1px;
     border-color: transparent;
     background-color: transparent;
     color: var(--text-2);
+    font-size: 13px;
     transition: background-color 100ms ease-out, border-color 100ms ease-out, color 100ms ease-out;
+}
+
+.mode-toggle-item .segmented-text {
+    font-size: 13px;
+    white-space: nowrap;
 }
 
 .mode-toggle-item:hover {
@@ -136,6 +144,7 @@
 .mode-toggle-item.view-switch-active .segmented-text {
     color: #FFFFFF;
     -unity-font-style: bold;
+    font-size: 13px;
 }
 
 .mode-toggle-item.segmented-active .icon-14,
@@ -971,10 +980,16 @@
     top: 8px;
     height: 38px;
 }
-.compact-view .mode-toggle-bar,
+.compact-view .mode-toggle-bar {
+    width: 330px;
+    height: 38px;
+}
 .compact-view .planet-pill,
 .compact-view .minimize-pill {
     height: 38px;
+}
+.compact-view .mode-toggle-item .segmented-text {
+    font-size: 12px;
 }
 .compact-view .col-left,
 .compact-view .col-right {
@@ -1300,36 +1315,41 @@
 .summary-grid {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
     gap: 8px;
     background-color: var(--surface-2);
     border-radius: var(--r-inner);
     border-width: 1px;
     border-color: var(--border);
-    padding: 14px;
+    padding: 14px 18px;
     margin-bottom: 12px;
 }
 
 .summary-cell {
-    width: 48%;
+    width: 31%;
+    flex-grow: 1;
+    min-width: 170px;
     flex-direction: column;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
 .summary-label {
     -unity-font: var(--font-heading);
-    font-size: 12px;
+    font-size: 11px;
     -unity-font-style: bold;
     color: var(--text-3);
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .summary-val {
     -unity-font: var(--font-body);
-    font-size: 18px;
+    font-size: 16px;
     -unity-font-style: bold;
     color: var(--accent);
     margin-top: 2px;
+    white-space: nowrap;
 }
 
 /* Confirmation Modal Overlay */
@@ -1848,7 +1868,7 @@
     flex-grow: 1;
 }
 
-.summary-cell {
+.output-summary-grid .summary-cell {
     width: 15.5%;
     min-width: 70px;
 }
